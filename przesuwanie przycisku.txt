@@ -1,0 +1,17 @@
+private void PrzeniesPrzycisk(Button btn)
+        {
+            if (((btn.Location.X == PustePole.X - 100 || btn.Location.X == PustePole.X + 100)
+                && btn.Location.Y == PustePole.Y)
+                || (btn.Location.Y == PustePole.Y - 100 || btn.Location.Y == PustePole.Y + 100)
+                && btn.Location.X == PustePole.X)
+            {
+                Point zamiana = btn.Location;
+                btn.Location = PustePole;
+                PustePole = zamiana;
+            }
+
+            if (PustePole.X == 300 && PustePole.Y == 300)
+                SprawdzObraz();
+
+
+        }

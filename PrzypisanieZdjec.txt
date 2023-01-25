@@ -1,0 +1,26 @@
+private void PrzypisanieZdjec(ArrayList zdjecia)
+        {
+            pictureBox1.Image = Image.FromFile(sciezkazdj200);
+            int i = 0;
+            int[] arr = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 };
+
+            arr = losowanie(arr);
+
+            foreach (Button b in panel1.Controls)
+            {
+                if (i < arr.Length)
+                {
+                    b.Image = (Image)zdjecia[arr[i]];
+                    i++;
+                }
+            }
+        }
+
+        private int[] losowanie(int[] arr)
+        {
+            Random rand = new Random();
+            arr = arr.OrderBy(x => rand.Next()).ToArray();
+
+            return arr;
+
+        }

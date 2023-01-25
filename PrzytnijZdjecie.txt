@@ -1,0 +1,33 @@
+private void PrzytnijZdjecie(Image original, int w, int h)
+        {
+            Bitmap bmp = new Bitmap(w, h);
+
+            Graphics graphic = Graphics.FromImage(bmp);
+
+            graphic.DrawImage(original, 0, 0, w, h);
+
+            graphic.Dispose();
+
+            int movr = 0, movd = 0;
+
+            for (int x = 0; x < 15; x++)
+            {
+                Bitmap piece = new Bitmap(100, 100);
+
+                for (int i = 0; i < 100; i++)
+                    for (int j = 0; j < 100; j++)
+                        piece.SetPixel(i, j,
+                            bmp.GetPixel(i + movr, j + movd));
+
+                zdjecia.Add(piece);
+
+                movr += 100;
+
+                if (movr == 400)
+                {
+                    movr = 0;
+                    movd += 100;
+                }
+
+            }
+        }
